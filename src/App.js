@@ -14,11 +14,14 @@ class App extends Component {
 		// bind methods to <App />
 		this.addItem = this.addItem.bind(this);
 		this.listUpdate = this.listUpdate.bind(this);
+		this.updateItem = this.updateItem.bind(this);
 		this.removeItem = this.removeItem.bind(this);
+		this.toggleEditMode = this.toggleEditMode.bind(this);
 
 		// initial state
 		this.state = {
-			items: []
+			items: [],
+			editMode: false
 		};
 	}
 
@@ -61,6 +64,30 @@ class App extends Component {
 		});
 	}
 
+	updateItem(e, id) {
+		// update state
+		const items = [...this.state.items];
+
+		// utility function
+		const itemById = (item) => item.id === id;
+
+		// reference
+		const index = items.indexOf(items.find(itemById));
+
+		// get the item
+		const item = items[index];
+
+		// copy existing item to new object
+		const updatedItem = {...item}
+
+		// update name property
+		updatedItem.name = e.target.value;
+
+		items[index] = updatedItem;
+
+		this.setState({ items }); // shorthand for {items: items}
+	}
+
 	listUpdate() {
 		let itemsJson = JSON.stringify(this.state.items);
 		localStorage.setItem('listItems', itemsJson);
@@ -78,6 +105,7 @@ class App extends Component {
 
 		// delete
 		items[index] = null;
+		items.splice(index, 1);
 
 		// update state
 		this.setState({
@@ -85,16 +113,31 @@ class App extends Component {
 		});
 	}
 
+	toggleEditMode() {
+		// get state
+		let editMode = this.state.editMode;
+
+		// toggle
+		editMode = (editMode) ? false : true;
+
+		// set state
+		this.setState({ editMode })
+	}
+
 	render() {
 		if (log) console.log('render()');
+		let editModeBtnText = (this.state.editMode) ? 'Save' : 'Edit list';
 		return (
 		<div className="wrapper">
 			<h1>Shopping List</h1>
 			<AddForm addItem={this.addItem} />
+			<button onClick={() => this.toggleEditMode()}>{editModeBtnText}</button>
 			<List
 				list={this.state.items}
 				listUpdate={this.listUpdate}
+				updateItem={this.updateItem}
 				removeItem={this.removeItem}
+				editMode={this.state.editMode}
 			/>
 		</div>
 		)

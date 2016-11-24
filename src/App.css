@@ -11,12 +11,73 @@ h1 {
 	margin-bottom: 1.5rem;
 }
 
+.lm-add-form {
+	margin-bottom: 1rem;
+}
+
 ul {
 	list-style: none;
 	margin: 1rem 0 0;
 	padding: 0;
+	max-width: 12rem;
 }
 
 li {
 	margin: 5px 0;
+	display: flex;
+	height: 1.3rem;
+}
+
+li button {
+	opacity: 0;
+	transition: opacity .2s ease-out;
+	margin-left: auto;
+	width: 1.3rem;
+	height: 1.3rem;
+	text-align: center;
+	font-size: 1rem;
+	line-height: 1.1rem;
+	padding: 0 0 1px;
+	background: tomato;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+li:hover button {
+	opacity: 1;
+}
+
+.lm-item__name,
+.lm-item input[type='text'] {
+	font-size: 1rem;
+	line-height: 1;
+	padding: 0;
+	font-family: helvetica;
+	border-bottom: 1px solid transparent;
+}
+
+.lm-item input[type='text'] {
+	display: none;
+	border: none;
+	background: none;
+	border-bottom: 1px dashed #ddd;
+}
+
+input[type='checkbox'] {
+	display: none;
+}
+
+.edit-mode li button {
+	display: none;
+}
+
+.edit-mode label.lm-item__name {
+	display: none;
+}
+
+.edit-mode .lm-item input[type='text'] {
+	display: block;
+	position: relative;
+	top: -2px;
 }

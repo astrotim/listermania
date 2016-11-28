@@ -17,6 +17,7 @@ class App extends Component {
 		this.updateItem = this.updateItem.bind(this);
 		this.removeItem = this.removeItem.bind(this);
 		this.toggleEditMode = this.toggleEditMode.bind(this);
+		this.login = this.login.bind(this);
 
 		// initial state
 		this.state = {
@@ -124,12 +125,34 @@ class App extends Component {
 		this.setState({ editMode })
 	}
 
+	login() {
+		const authHandler = function(error, user) {
+			if(error) doSomethingWithError(error);
+
+			doSomethingWithUser(user);
+			return;
+		}
+
+		base.authWithOAuthPopup('google', authHandler);
+
+		function doSomethingWithUser(user) {
+			console.log('success!', user);
+		}
+
+		function doSomethingWithError(error) {
+			console.log(error);
+		}
+	}
+
+
 	render() {
 		if (log) console.log('render()');
 		let editModeBtnText = (this.state.editMode) ? 'Save' : 'Edit list';
 		return (
 		<div className="wrapper">
 			<h1>Shopping List</h1>
+			<button onClick={() => this.login()}>Login with Google</button>
+			<br />
 			<AddForm addItem={this.addItem} />
 			<button onClick={() => this.toggleEditMode()}>{editModeBtnText}</button>
 			<List

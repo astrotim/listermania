@@ -14,6 +14,15 @@ class Login extends Component {
 		}
 	}
 
+	componentWillMount() {
+		// sync with Firebase
+		this.ref = base.syncState(`uid`, {
+			context: this,
+			state: 'uid'
+		});
+	}
+
+
 	login() {
 		base.authWithOAuthPopup('google', this.authHandler);
 	}

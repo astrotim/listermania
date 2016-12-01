@@ -48,7 +48,6 @@ h1 {
 ul {
 	list-style: none;
 	padding: 0;
-	max-width: 12rem;
 }
 
 li {
@@ -77,6 +76,17 @@ li:hover button {
 	opacity: 1;
 }
 
+.lm-list {
+	width: calc(100% - 10rem);
+	float: left;
+	margin-top: 0;
+}
+
+.lm-item {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
 .lm-item__name,
 .lm-item input[type='text'] {
 	font-size: 1rem;
@@ -97,6 +107,11 @@ input[type='checkbox'] {
 	display: none;
 }
 
+.edit-btn {
+	padding: 0 1.5rem;
+	float: right;
+}
+
 .edit-mode li button {
 	display: none;
 }
@@ -107,6 +122,8 @@ input[type='checkbox'] {
 
 .edit-mode .lm-item input[type='text'] {
 	display: block;
-	position: relative;
-	top: -2px;
+	/*position: relative;*/
+	/*top: -2px;*/
+	height: 1.5rem;
+	margin: 0;
 }

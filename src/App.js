@@ -144,7 +144,7 @@ class App extends Component {
 		<div className="wrapper">
 			<h1>Shopping List</h1>
 			<AddForm addItem={this.addItem} />
-			<button className="waves-effect waves-light btn" onClick={() => this.toggleEditMode()}>{editModeBtnText}<i className="material-icons right">mode_edit</i></button>
+			<button className="waves-effect waves-light btn edit-btn" onClick={() => this.toggleEditMode()}>{editModeBtnText}<i className="material-icons right">mode_edit</i></button>
 			<List
 				list={this.state.items}
 				listUpdate={this.listUpdate}

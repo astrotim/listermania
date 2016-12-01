@@ -17,7 +17,7 @@ class AddForm extends Component {
 		<form ref={(input) => this.addForm = input} className="lm-add-form" onSubmit={(e) => this.createItem(e)}>
 			<label htmlFor="addInput" className="sr-only">New item</label>
 			<input ref={(input) => this.item = input} type="text" id="addInput" placeholder="Add item" />
-			<button className="lm-add-form__btn" type="submit">Add</button>
+			<button className="lm-add-form__btn waves-effect waves-light btn" type="submit"><i className="material-icons">add</i></button>
 		</form>
 		)
 	};

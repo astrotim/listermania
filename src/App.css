@@ -1,5 +1,11 @@
+@import 'materialize.css';
+
 #root {
 	padding: 1rem;
+}
+
+* + * {
+	margin-bottom: 1.5rem;
 }
 
 .sr-only {
@@ -11,13 +17,36 @@ h1 {
 	margin-bottom: 1.5rem;
 }
 
+.login {
+	min-height: calc(100vh - 2rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logout.btn-flat {
+	position: absolute;
+	right: .5rem;
+	top: 0;
+	padding: 0 .5rem;
+}
+
 .lm-add-form {
 	margin-bottom: 1rem;
 }
 
+.lm-add-form input {
+	width: calc(100% - 3.5rem);
+}
+
+.lm-add-form__btn {
+	width: 3rem;
+	padding: 0;
+	margin-left: .5rem;
+}
+
 ul {
 	list-style: none;
-	margin: 1rem 0 0;
 	padding: 0;
 	max-width: 12rem;
 }

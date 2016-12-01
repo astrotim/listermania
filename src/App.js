@@ -126,19 +126,25 @@ class App extends Component {
 	}
 
 	logout() {
-		base.unath();
+		localStorage.removeItem('uid');
+
+		this.setState({
+			uid: null
+		});
+
+		base.unauth();
+
+		this.props.router.replace('/login');
 	}
 
 	render() {
 		if (log) console.log('render()');
-		let editModeBtnText = (this.state.editMode) ? 'Save' : 'Edit list';
+		let editModeBtnText = (this.state.editMode) ? 'Save' : 'Edit';
 		return (
 		<div className="wrapper">
 			<h1>Shopping List</h1>
-			<button onClick={() => this.logout()}>Logout</button>
-			<br />
 			<AddForm addItem={this.addItem} />
-			<button onClick={() => this.toggleEditMode()}>{editModeBtnText}</button>
+			<button className="waves-effect waves-light btn" onClick={() => this.toggleEditMode()}>{editModeBtnText}<i className="material-icons right">mode_edit</i></button>
 			<List
 				list={this.state.items}
 				listUpdate={this.listUpdate}
@@ -146,6 +152,7 @@ class App extends Component {
 				removeItem={this.removeItem}
 				editMode={this.state.editMode}
 			/>
+			<button className="logout waves-effect waves-light btn-flat" onClick={() => this.logout()}>Logout</button>
 		</div>
 		)
 	};

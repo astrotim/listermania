@@ -35,12 +35,20 @@ class Login extends Component {
 
 		console.log('logged in as', authData.user.displayName, 'uid:', authData.user.uid);
 
+		// update localStorage
+		localStorage.setItem('uid', authData.user.uid);
+
+		// update state
 		this.setState({
 			uid: authData.user.uid
 		});
+
+		this.props.router.replace('/');
 	}
 
 	logout() {
+		localStorage.removeItem('uid');
+
 		this.setState({
 			uid: null
 		});
@@ -50,9 +58,8 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div>
-				<button onClick={() => this.login()}>Login with Google</button>
-				<button onClick={() => this.logout()}>Logout</button>
+			<div className="login">
+				<button className="waves-effect waves-light btn" onClick={() => this.login()}>Login with Google</button>
 			</div>
 		)
 	};

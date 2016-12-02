@@ -5,7 +5,8 @@ class AddForm extends Component {
 		event.preventDefault();
 		const item = {
 			name: this.item.value,
-			id: Date.now()
+			id: Date.now(),
+			order: 0
 		}
 		console.log('item:', item);
 		this.props.addItem(item);
@@ -16,8 +17,8 @@ class AddForm extends Component {
 		return (
 		<form ref={(input) => this.addForm = input} className="lm-add-form" onSubmit={(e) => this.createItem(e)}>
 			<label htmlFor="addInput" className="sr-only">New item</label>
-			<input ref={(input) => this.item = input} type="text" id="addInput" placeholder="Add item" />
-			<button className="lm-add-form__btn waves-effect waves-light btn" type="submit"><i className="material-icons">add</i></button>
+			<input ref={(input) => this.item = input} type="text" className="" id="addInput" placeholder="Add item" />
+			<button className="lm-add-form__btn waves-effect waves-light btn indigo" type="submit"><i className="material-icons">add</i></button>
 		</form>
 		)
 	};

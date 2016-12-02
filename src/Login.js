@@ -59,7 +59,7 @@ class Login extends Component {
 	render() {
 		return (
 			<div className="login">
-				<button className="waves-effect waves-light btn" onClick={() => this.login()}>Login with Google</button>
+				<button className="waves-effect waves-light btn deep-orange darken-3" onClick={() => this.login()}>Login with Google</button>
 			</div>
 		)
 	};

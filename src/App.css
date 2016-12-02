@@ -32,11 +32,18 @@ h1 {
 }
 
 .lm-add-form {
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
-.lm-add-form input {
+.lm-add-form input[type=text] {
 	width: calc(100% - 3.5rem);
+	border-bottom: 1px solid #3f51b5;
+	margin-bottom: 0;
+}
+
+.lm-add-form input[type=text]:focus {
+	border-bottom-color: #3f51b5;
+	box-shadow: 0 1px 0 0 #3f51b5;
 }
 
 .lm-add-form__btn {
@@ -57,7 +64,7 @@ li {
 }
 
 li button {
-	opacity: 0;
+/*	opacity: 0;
 	transition: opacity .2s ease-out;
 	margin-left: auto;
 	width: 1.3rem;
@@ -68,27 +75,35 @@ li button {
 	padding: 0 0 1px;
 	background: tomato;
 	color: white;
-	border: none;
+	border: none;*/
 	cursor: pointer;
 }
 
 li:hover button {
-	opacity: 1;
+	/*opacity: 1;*/
 }
 
 .lm-list {
-	width: calc(100% - 10rem);
+	width: 100%;
+	/*width: calc(100% - 10rem);*/
 	float: left;
 	margin-top: 0;
 }
 
 .lm-item {
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
 	margin-top: 0;
 	margin-bottom: 1rem;
 }
 
+.lm-item__name {
+	margin-bottom: 0;
+}
+
 .lm-item__name,
-.lm-item input[type='text'] {
+.lm-item input[type=text] {
 	font-size: 1rem;
 	line-height: 1;
 	padding: 0;
@@ -96,11 +111,26 @@ li:hover button {
 	border-bottom: 1px solid transparent;
 }
 
-.lm-item input[type='text'] {
+.lm-item input[type=text] {
 	display: none;
 	border: none;
 	background: none;
 	border-bottom: 1px dashed #ddd;
+}
+
+.lm-item .btn {
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	/*height: 1.5rem;*/
+	margin-left: auto;
+}
+
+.lm-item__order[type=number] {
+	margin-left: .5rem;
+	width: 2rem;
+	text-align: center;
+	padding-top: .25rem;
 }
 
 input[type='checkbox'] {
@@ -109,11 +139,12 @@ input[type='checkbox'] {
 
 .edit-btn {
 	padding: 0 1.5rem;
+	margin-bottom: 1.5rem;
 	float: right;
 }
 
 .edit-mode li button {
-	display: none;
+	/*display: none;*/
 }
 
 .edit-mode label.lm-item__name {
@@ -124,6 +155,6 @@ input[type='checkbox'] {
 	display: block;
 	/*position: relative;*/
 	/*top: -2px;*/
-	height: 1.5rem;
-	margin: 0;
+/*	height: 1.5rem;
+	margin: 0;*/
 }

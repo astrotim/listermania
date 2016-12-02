@@ -6,6 +6,20 @@ import './App.css';
 
 const log = false;
 
+const reorder = (prev, next) => {
+	let a = parseInt(prev.order, 10);
+	let b = parseInt(next.order, 10);
+
+	if (a > b) {
+		return 1;
+	}
+	if (a < b) {
+		return -1;
+	}
+	// a must be equal to b
+	return 0;
+};
+
 class App extends Component {
 	constructor() {
 		if (log) console.log('constructor()');
@@ -81,8 +95,8 @@ class App extends Component {
 		// copy existing item to new object
 		const updatedItem = {...item}
 
-		// update name property
-		updatedItem.name = e.target.value;
+		// update property
+		updatedItem[e.target.name] = e.target.value;
 
 		items[index] = updatedItem;
 
@@ -90,6 +104,15 @@ class App extends Component {
 	}
 
 	listUpdate() {
+		console.log('listUpdate()');
+
+		this.state.items
+			.sort(reorder)
+			.map((item, i) => {
+				item.order = i;
+				return item;
+			});
+
 		let itemsJson = JSON.stringify(this.state.items);
 		localStorage.setItem('listItems', itemsJson);
 	}
@@ -144,7 +167,7 @@ class App extends Component {
 		<div className="wrapper">
 			<h1>Shopping List</h1>
 			<AddForm addItem={this.addItem} />
-			<button className="waves-effect waves-light btn edit-btn" onClick={() => this.toggleEditMode()}>{editModeBtnText}<i className="material-icons right">mode_edit</i></button>
+			<button className="waves-effect waves-light btn indigo  edit-btn" onClick={() => this.toggleEditMode()}>{editModeBtnText}<i className="material-icons right">mode_edit</i></button>
 			<List
 				list={this.state.items}
 				listUpdate={this.listUpdate}
